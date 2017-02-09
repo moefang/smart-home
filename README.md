@@ -1,4 +1,4 @@
-# The Smart home project at CSIRO
+# The Smart Home Project at CSIRO
 Author: Meng Fang Date: 10 Nov 2015
 
 There are three different parts: multi-tracker, uwb and miband. 
@@ -7,7 +7,7 @@ Before runing. Please make sure that you have installed scikit-learn.
 ## multi-tracker
 It is implemented for presence tracking for multiple residents (here, we have 2 residents).
 
-### How to run?
+#### How to run?
 The following is used for runing trackers implemented by NB.
 ```sh
 $ python multiTracker_NB.py
@@ -21,7 +21,7 @@ $ python multiTracker_HMM.py
 ## uwb
 It is used for testing uwb data.
 
-### How to run?
+#### How to run?
 If you have train data and test data then use
 ```sh
 $ python classification4uwb.py train_file test_file
