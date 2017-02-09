@@ -1,70 +1,64 @@
-# Author: Meng Fang
-# Date: 10 Nov 2015
+# The Smart home project at CSIRO
+Author: Meng Fang Date: 10 Nov 2015
 
 There are three different parts: multi-tracker, uwb and miband. 
-
 Before runing. Please make sure that you have installed scikit-learn.
 
-## 1, multi-tracker: it is implemented for presence tracking for multiple residents (here, we have 2 residents).
+## multi-tracker
+It is implemented for presence tracking for multiple residents (here, we have 2 residents).
 
 ### How to run?
+The following is used for runing trackers implemented by NB.
 ```sh
 $ python multiTracker_NB.py
 ```
 
-It is used for runing trackers implemented by NB.
+The following is used for running trackers implemented by HMM.
 ```sh
 $ python multiTracker_HMM.py
 ```
-It is used for running trackers implemented by HMM.
 
-
-## 2, uwb: it is used for testing uwb data.
+## uwb
+It is used for testing uwb data.
 
 ### How to run?
 If you have train data and test data then use
 ```sh
-$ python classification4uwb.py train test
+$ python classification4uwb.py train_file test_file
 ```
-train is the file name of the train data. test is the file name of the test data.
 
-If you have a dataset and want to do CV (here, we use 3 folds cv) then use
+If you have a dataset and want to apply cross-validation (here, we use 3 folds cv) then use
 ```sh
-$ python classification_CV4uwb.py data
+$ python classification_CV4uwb.py data_file
 ```
 
-data is the file name of input data.
-
-If you have a dataset and want to do PCA for selecting features then use
+If you have a dataset and want to apply PCA for selecting features then use
 ```sh
-$ python classification_PCA4uwb.py data 3
+$ python classification_PCA4uwb.py data_file num_of_features
 ```
+For example, replace num_of_features as 3 and now 3 is the number of selected features.
 
-data is file name of the input data. 3 is the number of selected features. Here, we also use 3 folds cv.
 
+## miband
+It is used for testing miband data.
 
-## 3, miband: it is used for testing miband data.
 It contains three precedures: download data from remote mysql server, format the raw data and test the data.
 
-To download data from remote mysql server, please use
+To download data from remote mysql server, we use
 ```sh
-$ python getDataFromDB.py "select .. where .. " rawdata
+$ python getDataFromDB.py "select .. where .. " output_raw_data_file
 ```
+The "select .. where .. " should be replaced by your query string (sql query) according to requirement.
 
-The "select .. where .. " should be replaced by your query string according to your requirements. rawdata is the file name of output file.
-
-To format the raw data, please use
+Data in output_file is a raw data. To format the raw data, please use
 ```sh
-$ python preprocessData.py labels rawdata newdata
+$ python preprocessData.py labels_file output_raw_data_file new_data_file
 ```
-
-labels is the file name of labels. rawdata is the file name of rawdata (from mysql). newdata is the file name of output file.
+The labels_file is a file containing labels of data. The output_raw_data_file is the file name of raw data (from mysql). The new_data_file is the file name of an output file.
 
 To test the data, please use
 ```sh
-$ python test4miband.py data
+$ python test4miband.py new_data_file
 ```
-data is the file name of the input data. 
-
 In this testing, there are two algorithms implemented: one is maximal value and another one is nb-histogram.
  
