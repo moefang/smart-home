@@ -17,19 +17,19 @@ fname = 'bluetooth.test12.fcrf'
 writer = open(fname,'w')
 
 inte=0
-irang=12
+irange=12
 # or 6
 
 for record in data:
 	label1=record[0]
 	label2=record[1]
 	features=record[2]
-	row=label1+' '+label2+' ----' 
+	row=label1+' '+label2+' ----'
 	for i in range(len(features)):
 		row=row+' '+features[i]+'@'+sensors[i]
 
 	inte=inte +1
-	if inte % irang ==0:
+	if inte % irange ==0:
 		row = row +'\n'
 	print row
 	writer.write(row+'\n')
